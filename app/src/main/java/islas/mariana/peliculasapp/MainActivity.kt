@@ -17,7 +17,7 @@ import islas.mariana.peliculasapp.viewmodels.PeliculaViewModel
 import islas.mariana.peliculasapp.viewmodels.PeliculaViewModelFactory
 import islas.mariana.peliculasapp.viewmodels.UsuarioViewModel
 import islas.mariana.peliculasapp.viewmodels.UsuarioViewModelFactory
-import islas.mariana.peliculasapp.vistas.PeliculaScreen
+    import islas.mariana.peliculasapp.vistas.PeliculaScreen
 import islas.mariana.peliculasapp.vistas.UsuarioScreen
 
 class MainActivity : ComponentActivity() {

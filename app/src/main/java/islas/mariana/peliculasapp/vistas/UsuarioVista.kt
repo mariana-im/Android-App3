@@ -1,6 +1,7 @@
 package islas.mariana.peliculasapp.vistas
 
 import android.R.attr.padding
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,21 +9,42 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import islas.mariana.peliculasapp.modelos.Usuario
 import islas.mariana.peliculasapp.viewmodels.UsuarioViewModel
+import android.util.Log
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 
 @Composable
 fun UsuarioScreen(viewModel: UsuarioViewModel) {
     val usuarios = viewModel.usuarios.value
 
-    Scaffold(
+    val context = LocalContext.current
 
+    Scaffold(
+    floatingActionButton = {
+        FloatingActionButton(
+            onClick = {
+                Log.d("test", "hola")
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Agregar"
+            )
+        }
+    }
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -46,6 +68,10 @@ fun UsuarioCard(usuario: Usuario) {
         Column(
             modifier = Modifier.padding(17.dp)
         ) {
+            Image(
+                painter = painterResource(usuario.foto),
+                contentDescription = "Avatar"
+            )
             Text(text = usuario.nombre)
             Text(text = usuario.correo)
             Text(text = usuario.edad.toString())
